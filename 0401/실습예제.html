@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CJ몰 실습예제</title>
+    <style>
+        *{margin: 0px;
+        padding:0px}
+        ul, li{list-style: none;}
+        .tab_con{
+            margin: 10px;
+            width:450px;
+            height:500px;
+            position: relative;
+        }
+        .tab_con ul{
+            display: flex;
+        }
+        .tab_con div{
+            display: none;
+        }
+        .tab_con ul > li{
+            width: 100%;
+        }
+        .tab_con ul > li > a> img{
+            width: 70px; height: 70px;
+            position:absolute;
+            top: 420px;
+            margin-left: 10px;
+        }
+        .tab_con ul > li > div > img{
+            position:absolute;
+            left:0px;
+            width:100%;
+            height:400px;
+        }     
+        li.on div{
+            display: block;
+        }
+    </style>
+</head>
+<body>
+    <article class="tab_con">
+        <ul>
+            <li class="on">
+                <a href="#" title=""><img src="./images/2010867715L.jpg" alt=""></a>
+                <div class="cont">
+                    <img src="./images/2010867715L.jpg" alt="">
+                </div>
+            </li>
+            <li>
+                <a href="#" title=""><img src="./images/2019307831L.jpg" alt=""></a>
+                <div>
+                    <img src="./images/2019307831L.jpg" alt="">
+                </div>
+            </li>
+            <li>
+                <a href="#" title=""><img src="./images/2029093376L.jpg" alt=""></a>
+                <div>
+                    <img src="./images/2029093376L.jpg" alt="">
+                </div>
+            </li>
+            <li>
+                <a href="#" title=""><img src="./images/91345011L.jpg" alt=""></a>
+                <div>
+                    <img src="./images/91345011L.jpg" alt="">
+                </div>
+            </li>
+            <li>
+                <a href="#" title=""><img src="./images/unil16881710986191_202403251432105001.jpg" alt=""></a>
+                <div>
+                    <img src="./images/unil16881710986191_202403251432105001.jpg" alt="">
+                </div>
+            </li>
+        </ul>
+    </article>
+
+    
+
+    <script>
+        const tabList = document.querySelectorAll('.tab_con li');
+
+        for(let i=0;i<tabList.length;i++){ //li태그의 개수만큼 반복실행
+            tabList[i].querySelector('a').addEventListener('click', function(e){
+                e.preventDefault();//새로고침 방지 == a태그의 이벤트를 무력시켜줌.
+                // window.alert('click');
+                for(let j=0;j<tabList.length;j++){ //li태그 개수만큼 on서식을 제거
+                tabList[j].classList.remove('on');
+                }
+                this.parentNode.classList.add('on'); //선택한 a요소의 부모인 li태그에 on클래스 적용함.
+                });
+            }
+    </script>
+</body>
+</html>

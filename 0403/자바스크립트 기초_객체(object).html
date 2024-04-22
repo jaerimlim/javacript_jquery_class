@@ -1,0 +1,131 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>자바스크립트 기초_객체(object)</title>
+  <style>
+    span{font-weight: bold;}
+    .color{
+      color: purple;
+    }
+    .color01{
+      color: orange;
+    }
+    .color02{
+      color: darkgreen;}
+  </style>
+</head>
+<body>
+  <h2>자바스크립트 기초_객체(object)</h2>
+  <dl>
+    <dt>객체(object)란?</dt>
+    <dd>1. 이름(key)과 값(value)로 구성된 속성을 담아놓은 컨테이너이다.</dd>
+    <dd>2. 객체에 변수를 선언하면 속성(property)을 사용할 수 있다. 예)document.getElementById('아이디명');</dd><!--getElementById 속성-->
+    <dd>3. 객체에 함수를 선언하면 메서드(method)를 사용할 수 있다. 예)document.write('내용출력');</dd><!--write 동사(메서드)-->
+  </dl>
+
+  <h3>1. 객체의 종류</h3>
+  <p>객체는 내장객체와 사용자 정의 객체로 분류된다. 내장 객체는 자바스크립트에 미리 정해놓은 객체이다.</p>
+  <ul>
+    <li>문서객체 (document)</li>
+    <li>윈도우, 브라우저 객체(window)</li>
+    <li>수학(Math) 객체</li>
+    <li>날짜(Date) 객체</li>
+    <li>배열(Array) 객체</li>
+    <li>문자열(String) 객체</li>
+  </ul>
+
+  <h3>2. 사용자 정의 객체 - 내장객체를 제외한 사용자가 원하는 내용을 토대로 직접 객체를 선언하여 작성하는 방법</h3>
+
+  <div>
+  <fieldset>
+    <legend>휴대폰 정보 입력하기</legend>
+    <p><label for="company">제조회사 : </label><input type="text" id="company"></p>
+    <p><label for="model">모델명 : </label><input type="text" id="model"></p>
+    <p><label for="color">색상명 : </label><input type="text" id="color"></p>
+    <input type="button" value="입력한 정보 출력하기(신청하기or주문하기)" id="order_btn">
+  </fieldset>
+  </div>
+  <p>출력 예) 나의 핸드폰 제조회사는 '000'이고 모델명은 '000'이며, 색상은 '000'입니다.</p>
+  <p id="result"></p>
+
+  <div>
+    <fieldset id="form1">
+      <legend>개인정보입력</legend>
+      <p><label for="last_name">성 : </label><input type="text" maxlength="2" id="last_name" placeholder="성을 입력하세요"></p>
+      <p><label for="first_name">이름 : </label><input type="text" maxlength="4" id="first_name" placeholder="이름을 입력하세요"></p>
+      <p><label font="age">나이 : </label><input  type="number" id="age"></p>
+      <p><label font="height">키 : </label><input type="number" id="height"></p>
+      <p><label font="weight">몸무게 : </label><input type="number" id="weight"></p>
+      <input type="submit" value="정보입력완료" id="finish_btn">
+      <input type="button" value="입력취소" id="reset_btn">
+    </fieldset>
+    <p id="result1"></p>
+  </div>
+
+
+  <script>
+    //-----------------개인정보입력 실습-----------------
+    //객체명
+    let p_date = new Object();
+    const btn1 = document.getElementById('finish_btn');
+    const btn2 = document.getElementById('reset_btn');
+    const res2 = document.getElementById('result1');
+
+    btn1.addEventListener('click', function(){
+      const l_name = document.getElementById('last_name').value;
+      const f_name = document.getElementById('first_name').value;
+      const a = document.getElementById('age').value;
+      const h = document.getElementById('height').value;
+      const w = document.getElementById('weight').value;
+
+      p_date.last_name = l_name;
+      p_date.first_name = f_name;
+      p_date.age = a;
+      p_date.height = h;
+      p_date.weight = w;
+
+      document.getElementById('result1').innerHTML=`성은 ${p_date.last_name} 이름은 ${p_date.first_name}이며
+      나이는 ${p_date.age}세입니다.<br> 키는 ${p_date.height}cm, 몸무게는 ${p_date.weight}kg입니다.`;
+
+    });
+
+    //입력 취소버튼 클릭시 입력창 내용이 초기화
+    btn2.addEventListener('click', function(){
+      document.getElementById('last_name').value=""; //값을 비운다
+      document.getElementById('first_name').value=""; //값을 비운다
+      document.getElementById('age').value=""; //값을 비운다
+      document.getElementById('height').value=""; //값을 비운다
+      document.getElementById('weight').value=""; //값을 비운다
+      res2.innerHTML=""; //값을 비운다
+    });
+
+
+
+    //1. 사용자 정의 객체 -------휴대폰 정보 입력하기 실습
+    // 객체명 = new Object
+
+    let phone = new Object();
+
+    const btn = document.getElementById('order_btn'); //버튼 변수
+
+    btn.addEventListener('click', function(){
+      const c = document.getElementById('company').value; //입력한 값을 저장하기 위해 뒤에 .value 작성해야함.
+      const m = document.getElementById('model').value; //입력한 값을 저장
+      const color = document.getElementById('color').value; //입력한 값을 저장
+      
+      //phone객체의 속성값 입력하기
+      phone.company = c; //애플
+      phone.model = m; //아이폰
+      phone.color = color; //화이트
+
+      //phone객체 출력하기
+      document.getElementById('result').innerHTML=`나의 핸드폰 제조회사는 <span class="color">${phone.company}</span>이고 모델명은 <span class="color01">${phone.model}</span>이며,
+      색상은 <span class="color02">${phone.color}</span>입니다.`;
+    });
+
+  </script>
+
+</body>
+</html>

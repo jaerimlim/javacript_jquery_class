@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>자바스크립트 수업목차</title>
+  <link rel="stylesheet" href="./css/main.css" type="text/css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.1/css/all.min.css" type="text/css">
+
+  <style>
+    .act{
+      transform: rotate(180deg)translateY(-10px) !important;
+    }
+    .sub li{display: none;}
+  </style>
+  <!-- 제이쿼리 라이브러리 연결 -->
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.2.4/jquery.min.js"></script>
+
+  <!-- 제이쿼리 래퍼 -->
+  <script>
+    $(document).ready(function(){
+      
+      let li = $('.list01 li');
+
+      li.click(function(){
+      
+      let subList = $(this).find('.sub li');
+        
+      // 모든 'ul.sub' 요소를 닫습니다. 클릭한 'subList' 요소는 제외합니다.
+      $('.list01 ul .sub').not(subList).slideUp();
+
+      // 클릭한 'subList' 요소를 토글합니다.
+      subList.slideToggle();
+
+  
+        
+      // 클릭한 'li' 요소의 자식 'i.fas' 요소에 'act' 클래스를 토글합니다.
+      $(this).find('i.fas').addClass('act').parent().siblings().find('i.fas').removeClass('act');
+})
+
+    });
+    
+  </script>
+
+
+</head>
+<body>
+  <!-- 상단헤더영역 -->
+  <header>
+    <h1><a href="index.html" title="자바스크립트_제이쿼리">Javascript&#x0026;jQuery
+
+    </a>
+    </h1>
+  </header>
+
+  <!-- 메인콘텐츠영역 -->
+  <main>
+    <!-- 1. 자바스크립트 -->
+    <section>
+      <h2><img src="./images/jslogo.png" alt="자바스크립트"></h2>
+      <ul class="list01">
+        <li>1일차 - 자바스크립트 소개와 활용예제<i class="fas fa-angle-down"></i>
+          <ul class="sub">
+            <li><a href="./0327/01.자바스크립트 소개와 기초문법.html">01자바스크립트기초문법</a></li>
+            <li><a href="./0327/02.자바스크립트 만들 수 있는 콘턴츠 찾아보기_만들기.html">02.자바스크립트 만들 수 있는 콘턴츠 찾아보기_만들기</a></li>
+          </ul>
+        </i> 
+        <li>2일차 - 자바스크립트 문서출력방법, 변수, 연산자<i class="fas fa-angle-down"></i>
+          <ul class="sub">
+            <li><a href="./0328/01자바스크립트_문서출력하기.html">01자바스크립트_문서출력하기</a></li>
+            <li><a href="./0328/02자바스크립트_변수의 개념과 활용.html">02자바스크립트_변수의 개념과 활용</a></li>
+            <li><a href="./0328/03자바스크립트_연산자.html">03자바스크립트_연산자</a></li>
+          </ul>
+        </li>
+        <li>3일차 - 자바스크립트 연산자실습, 변수에 저장할 수 있는 데이터 유형 종류, 제어문(if, if else, else if, )<i class="fas fa-angle-down"></i>
+          <ul class="sub">
+            <li><a href="./0329/01연산자 실습하기.html">01연산자 실습하기</a></li>
+            <li><a href="./0329/02변수에 저장할 수 있는 데이터유형.html">02변수에 저장할 수 있는 데이터유형</a></li>
+            <li><a href="./0329/03자바스크립트 기초_제어문.html">03자바스크립트 기초_제어문</a></li>
+          </ul>
+        </li>
+        <li>4일차 - 자바스크립트 제어문(반복문 switch case, while, do while, for)<i class="fas fa-angle-down"></i>
+          <ul class="sub">
+            <li><a href="./0401/01자바스크립트_제어문02_switch_case.html">02_switch_case</a></li>
+            <li><a href="./0401/01자바스크립트_제어문03_while문_do while문_for문.html">03_while문_do while문_for문</a></li>
+            <li><a href="./0401/01자바스크립트_제어문03_반복문을 활용한 탭콘텐츠 구현하기.html">03_반복문을 활용한 탭콘텐츠 구현하기</a></li>
+            <li><a href="./0401/실습예제.html">실습예제</a></li>
+          </ul>
+        </li>
+        <li>5일차 - 자바스크립트 함수의 개념과 활용<i class="fas fa-angle-down"></i>
+          <ul class="sub">
+            <li><a href="./0402/자바스트립트기초_함수의 개념과 활용.html">자바스트립트기초_함수의 개념과 활용</a></li>
+            <li><a href="./0402/자바스크립트 실습_함수를 활용하여 비만도 지수 구하기.html">실습_함수를 활용하여 비만도 지수 구하기</a></li>
+          </ul>
+        </li>
+        <li>6일차 - 자바스크립트 기초_객체, 이벤트<i class="fas fa-angle-down"></i>
+          <ul class="sub">
+            <li><a href="./0403/자바스크립트 기초_객체(object).html">자바스크립트 기초_객체(object)</a></li>
+            <li><a href="./0403/자바스크립트기초_이벤트(event).html">자바스크립트기초_이벤트(event)</a></li>
+          </ul>
+        </li>
+        <li>7일차 - 자바스크립트 기초_객체(수학)<i class="fas fa-angle-down"></i>
+          <ul class="sub">
+            <li><a href="./0405/자바스크립트 기초_객체(수학).html">자바스크립트 기초_객체(수학)</a></li>
+          </ul>
+        </li>
+        <li>8일차 - 자바스크립트 내장객체 - 배열, 날짜, 브라우저, 문서<i class="fas fa-angle-down"></i>
+          <ul class="sub">
+            <li><a href=""></a></li>
+          </ul>
+        </li>
+      </ul>
+    </section>
+
+    <!-- 2. 제이쿼리 -->
+    <section>
+      <h2><img src="./images/jqerylogo.png" alt="제이쿼리"></h2>
+    </section>
+  </main>
+
+  <!-- 푸터영역 -->
+</body>
+</html>
