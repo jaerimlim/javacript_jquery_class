@@ -1,0 +1,216 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>실습예제</title>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+  <style>
+    *{margin: 0px; padding: 0px;}
+    .p_box{
+      width: 600px;
+      margin: 0 auto;
+      position: relative;
+    }
+    .sub_img ul{
+      width: 100%;
+      display: flex;
+      flex-wrap: wrap;
+      margin: 0px;
+      padding: 0px;
+    }
+    .sub_img ul li{
+      list-style: none;
+    }
+    .sub_img ul li img{
+      width: 100px;
+      height: 100px;
+    }
+    #main_img img{width: 600px; height: 400px;}
+    .fa-angle-left{
+      width: 40px;
+      height: 80px;
+      background: #e9e8e8;
+      font-size: 30px;
+      position: absolute;
+      line-height: 80px;
+      text-align: center;
+      top: 75px;
+      left: -50px;
+    }
+    .fa-angle-right{
+      width: 40px;
+      height: 80px;
+      background: #e9e8e8;
+      font-size: 30px;
+      position: absolute;
+      line-height: 80px;
+      text-align: center;
+      top: 75px;
+      right: -50px;
+    }
+    #main_img{
+      width: 600px;
+      height: 400px;
+      position: relative;
+    }
+    .l_dowm{
+      font-size: 30px;
+      position: absolute;
+      top: 50%;
+      transform: translateY(-40px);
+      left: 0px;
+      background: rgba(233, 232, 232,0.5);
+    }
+    .r_dowm{
+      font-size: 30px;
+      position: absolute;
+      top: 50%;
+      transform: translateY(-40px);
+      right: 0px;
+      background: rgba(233, 232, 232,0.5);
+    }
+    .top{
+      margin-top: 10px;
+      display: flex;
+    }
+    #page_num{font-size: 14px; color: red; font-weight: bold;
+    padding-top: 10px;}
+    .bottom{
+      display: flex;
+      margin-bottom: 10px;
+    }
+    .b_btn{
+      position: absolute;
+      right: 0px;
+    }
+      
+
+  </style>
+</head>
+<body>
+  <div class="p_box">
+
+    <div class="box">
+      <div class="top">
+        <h2>포토</h2>
+        <span id="page_num">&nbsp;</span>
+      </div>
+      <div class="bottom">
+        <p>스틸컷 포스터</p>
+        <div class="b_btn">
+        <input type="button" value="원본보기">
+        <input type="button" value="주소복사">
+        </div>
+      </div>
+    </div>
+
+    <div class="sub_img">
+      <ul class="sub">
+        <li><img src="./images/common1.jpg" alt=""></li>
+        <li><img src="./images/common2.jpg" alt=""></li>
+        <li><img src="./images/common3.jpg" alt=""></li>
+        <li><img src="./images/common4.jpg" alt=""></li>
+        <li><img src="./images/common5.jpg" alt=""></li>
+        <li><img src="./images/common6.jpg" alt=""></li>
+        <li><img src="./images/common7.jpg" alt=""></li>
+        <li><img src="./images/common8.jpg" alt=""></li>
+        <li><img src="./images/common9.jpg" alt=""></li>
+        <li><img src="./images/common10.jpg" alt=""></li>
+        <li><img src="./images/common11.jpg" alt=""></li>
+        <li><img src="./images/common12.jpg" alt=""></li>
+      </ul>
+      <i class="fas fa-angle-left" id="l_btn"></i>
+      <i class="fas fa-angle-right" id="r_btn"></i>
+    </div>
+
+    <div id="main_img">
+      <img src="./images/common1.jpg" alt="" id="b_img">
+      <i class="fas fa-angle-left l_dowm" id="ml_btn"></i>
+      <i class="fas fa-angle-right r_dowm" id="mr_btn"></i>
+    </div>
+
+
+
+  <script>
+
+
+    //1. 변수선언
+    let n = 1;
+    const t_n = 12;
+    const l_btn = document.getElementById('l_btn');
+    const r_btn = document.getElementById('r_btn');
+    const ml_btn = document.getElementById('ml_btn');
+    const mr_btn = document.getElementById('mr_btn');
+    const m_img = document.getElementById('b_img');
+    let s_img =document.querySelectorAll('.sub > li > img');
+
+    
+    for(let j=0; j<s_img.length;j++){
+      s_img[j].addEventListener('click', function(){
+        document.getElementById('page_num').innerHTML=  j+1 + '/' + t_n;
+
+        let image_src = this.src;
+        m_img.src=image_src;
+      });
+    }
+    
+    //2. 1/5출력하기
+    document.getElementById('page_num').innerHTML='<b>' + n + '</b>' + '/' + t_n;
+
+    l_btn.onclick=function(){
+      // window.alert('좌측버튼 클릭');
+      //5,4,3,2,1
+      if(n==1){
+        n=12;
+      }else{
+        n--;
+      }
+      //번호가 변경
+      document.getElementById('page_num').innerHTML= n + '/' + t_n;
+      //이미지 변경
+      document.getElementById('b_img').src="./images/common"+n+".jpg";
+    }
+    r_btn.onclick=function(){
+      // window.alert('우측버튼 클릭');
+      if(n==12){
+        n=1;
+      }else{
+        n++;
+      }
+      document.getElementById('page_num').innerHTML= n + '/' + t_n;
+      //이미지 변경
+      document.getElementById('b_img').src="./images/common"+n+".jpg";
+    }
+
+
+    ml_btn.onclick=function(){
+      // window.alert('좌측버튼 클릭');
+      //5,4,3,2,1
+      if(n==1){
+        n=12;
+      }else{
+        n--;
+      }
+      //번호가 변경
+      document.getElementById('page_num').innerHTML= n + '/' + t_n;
+      //이미지 변경
+      document.getElementById('b_img').src="./images/common"+n+".jpg";
+    }
+    mr_btn.onclick=function(){
+      // window.alert('우측버튼 클릭');
+      if(n==12){
+        n=1;
+      }else{
+        n++;
+      }
+      document.getElementById('page_num').innerHTML= n  + '/' + t_n;
+      //이미지 변경
+      document.getElementById('b_img').src="./images/common"+n+".jpg";
+    }
+
+
+
+  </script>
+</body>
+</html>

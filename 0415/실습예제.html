@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>실습예제</title>
+  <style>
+    #food{
+      width: 300px; height: 340px;
+      border: 2px solid #000;
+      text-align: center;
+    }
+    #food span{
+      background: #fff;
+      border: 2px solid #000;
+      padding: 3px 4px;
+      background: yellow;
+      position: relative;
+      top: -10px;
+    }
+    #food img{
+      padding-top: 20px;
+      width: 280px;
+      height: 250px;
+    }
+  </style>
+</head>
+<body>
+  
+  
+  <h3>요일별 추천요리 출력하기</h3>
+  <div id="food"></div>
+
+
+  <script>
+    
+    //날짜객체
+    let today3 = new Date();
+
+    let day = today3.getDay(); //요일번호
+
+    let array = ['일', '월', '화', '수' , '목', '금', '토'];
+    let food = ['food1.jpg', 'food2.jpg', 'food3.jpg', 'food4.jpg','food5.jpg','food6.jpg','food7.jpg']
+
+    //오늘(월)의 추천요리는 '000'입니다.
+    document.getElementById('food').innerHTML=`
+      <span>오늘의 (${array[day]})추천요리는</span> 
+      <img src="./food/${food[day]}" alt=""> 
+    `
+
+    </script>
+</body>
+</html>
